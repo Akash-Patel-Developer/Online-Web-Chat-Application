@@ -9,7 +9,7 @@
     width: 100%;
     display: grid;
     grid-template-columns: 7rem 18rem 40rem 15rem;
-    background: url(/images/download.svg);
+    background: url("images/BG5.jpg");
 }
 .box{
     height: 100%;
@@ -32,11 +32,32 @@
     width: 4rem;
     border-radius: 100%;
     margin-top: 4px;
-    background: url(/images/download.png);
+    background: url(./images/download.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     margin-left: 1rem;
+}
+.box1 .group p{
+    color: white;
+    font-weight: bold;
+    backdrop-filter: blur(7px);
+    display: block;
+    height: 2rem;
+    text-align: center;
+    line-height: 1.5rem;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%);
+    margin-left: 3rem;
+    margin-top: 1rem;
+    overflow: hidden;
+    width: 0.1px;
+    transition: all 0.9s;
+    position: relative;
+    left: -70px;
+    top: 45px;
+}
+.box1 .group:hover p{
+    width: 7rem;
 }
 .box1 .add{
     height: 4rem;
@@ -81,7 +102,7 @@
     z-index: 100;
     width: 20rem;
     left: 30rem;
-    top: -16rem;
+    /* top: -16rem; */
     height: 15rem;
     /* text-align: center; */
     padding-left: 20px;
@@ -133,8 +154,8 @@
 .box1 .add:hover p{
     transform: scale(1);
 }
-.box1 .group p{
-    color: white;
+.about .group p{
+    color: green;
     font-weight: bold;
     backdrop-filter: blur(7px);
     display: block;
@@ -229,10 +250,11 @@
     margin-left: 14px;
 }
 .box3{
-    border-right: 1px solid ;
-    box-shadow: 0 0 4px white;
-    border-radius: 5px;
-    /* backdrop-filter: blur(1px); */
+    /* border: 3px solid red; */
+    border-right: 1px solid ; 
+    box-shadow: 0 0 4px white; 
+    border-radius: 5px; 
+    backdrop-filter: blur(4px);
 }
 .box3 .person{
     /* border-bottom: 2px solid red; */

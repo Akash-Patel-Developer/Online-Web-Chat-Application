@@ -6,6 +6,7 @@ images.forEach((e)=>{
     e.addEventListener('click',()=>{
         let src = e.src;
         container.style.background =`url(${src})`;
+        console.log(src);
     });
 })
 
