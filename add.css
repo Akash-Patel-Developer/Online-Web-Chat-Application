@@ -1,0 +1,68 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container{
+    /* border: 2px solid red; */
+    height: 37.1rem;
+    background: url(./images/download.svg);
+    
+}
+.box1 .create{
+    /* border: 2px solid red; */
+    padding: 10px 10px 10px 10px;
+    position: absolute;
+    z-index: 100;
+    width: 20rem;
+    left: calc(50% - 8rem);
+    /* top: -16rem; */
+    height: 15rem;
+    /* text-align: center; */
+    padding-left: 20px;
+    /* background-color: green; */
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 4px yellow;
+    border-radius: 4px;
+    /* padding-bottom: 2px; */
+    transition: ease-in-out 1s;
+    top: 8rem;
+}
+.box1 .create p{
+    color: white;
+    text-align: center;
+}
+.box1 .create .gName{
+    border: 2px solid red;
+    border-radius: 2px;
+    width: 16rem;
+    height: 2rem;
+    border: none;
+    outline: none;
+    padding-left: 4px;
+    box-shadow: 0 0 2px white;
+}
+.box1 .create label{
+    color: gold;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.box1 .create input{
+    border: none;
+    outline: none;
+    background: transparent;
+    /* color: red; */
+    border-radius: 4px;
+    box-shadow: 0 0 1px white;
+}
+.box1 .create .submit{
+    border: 2px solid red;
+    width: 5rem;
+    height: 2rem;
+    margin-left: 7rem;
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+    border:none;
+    box-shadow: 0 0 12px  pink;
+    border-radius: 2px;
+}

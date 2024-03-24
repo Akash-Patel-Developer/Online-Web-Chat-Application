@@ -6,73 +6,36 @@
     <link rel="stylesheet" href="1.css?v=<?php echo time(); ?>">
     <title>Online-Chat-Application</title>
     <style></style>
+    <!-- <script language="JavaScript" src="1.js"></script> -->
 </head>
 <body>
 <div class="container">
     <div class="box box1">
-        <form method="POST" enctype="multipart/form-data" class="create">
-            <p>
-                <?php
-                    $conn = new mysqli("localhost","root","","emp");
-
-                    
-                    
-                    if($conn->connect_error){
-                        echo "problem in database";
-                    }else{
-                        if($_SERVER['REQUEST_METHOD']){
-                            if(isset($_POST['group-name']) && !empty($_POST['group-name'])){
-                                $gName = $_POST['group-name'];
-                                if(strlen($_POST['group-name'])<=10){
-                                    if(isset($_FILES['icon'])){
-                                     $icon_name = $_FILES['icon']['name'];
-                                     $icon_size = $_FILES['icon']['size'];
-                                     $icon_tmp = $_FILES['icon']['tmp_name'];
-                                     $icon_ext = pathinfo($icon_name,PATHINFO_EXTENSION);
-                                     $icon_strl = strtolower($icon_ext);
-                                     $icon_allowed_ext = ['jpg','jpeg','png','svg','webp'];
-
-                                     $icon_arry = in_array($icon_strl,$icon_allowed_ext);
-                                     if($icon_arry){
-                                        $icno_new_name = uniqid('IMG-',TRUE).'.'.$icon_strl;
-                                        $icnon_upload_path = "images/".$icno_new_name;
-                                        move_uploaded_file($icon_tmp,$icnon_upload_path);
-                                     }else{
-                                        echo "it's not working";
-                                     }
-                                     
-                                    //  echo ;
-                                     
-                                    }else{
-                                        echo "Please choose your icon";
-                                    }
-                                }else{
-                                    echo "you group name must be uner 8.";
-                                }
-                            }else{
-                                echo "plz enter you group name";
-                            }
-                        }else{
-                            echo "not world";
-                        }
-                    }
-                ?>
-            </p>
-            <br>
-            <label>Group Name :</label>
-            <br>
-            <input type="text" name="group-name" placeholder="enter your group name" class="gName">
-            <br><br>
-            <label>Choose icon :</label>
-            <input type="file" name="icon" id="">
-            <br><br>
-            <input type="submit" value="Save" class="submit">
-        </form>
+        
         <div class="h">GROUPS</div>
-        <div class="group">
-            <p class="p">HACKERS</p>
-        </div>
+        
+            <?php
 
+                $conn = new mysqli("localhost", "root", "", "emp");
+
+                if ($conn->connect_error) {
+                    echo "problem";
+                } else {
+                    $sql_select = "SELECT `gname`, `icon` FROM `chat_group` WHERE `gname`=? OR `icon`=?";
+                    $fetch_stmt = $conn->prepare($sql_select);
+                    $fetch_stmt->execute();
+                    $fetch_stmt->bind_result($gname,$icon);
+                    if($fetch_stmt->fetch()){
+                        echo "hllo world";
+                    }
+                }
+
+            
+        ?>
+        
+        <div class="group" style="background: url();">
+                                <p class="p"></p>
+        </div>
         <div class="add">+
             <p class="add-p">Click and create your own group</p>
         </div>
@@ -158,6 +121,6 @@
         </div>
     </div>
 </div>
-<script src="1.js"></script>
+<script src="1.js?v=<?php echo time(); ?>"></script>
 </body>
 </html>
