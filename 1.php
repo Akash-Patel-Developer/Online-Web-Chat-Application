@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="1.css?v=<?php echo time(); ?>">
     <title>Online-Chat-Application</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style></style>
     <!-- <script language="JavaScript" src="1.js"></script> -->
 </head>
@@ -13,29 +14,29 @@
     <div class="box box1">
         
         <div class="h">GROUPS</div>
-        
-            <?php
+        <?php
+                $conn = mysqli_connect("localhost","root","","emp");
+                $sql_select = "SELECT `id`, `gname`, `icon` FROM `chat_group`";
+                $query = mysqli_query($conn,$sql_select); 
 
-                $conn = new mysqli("localhost", "root", "", "emp");
-
-                if ($conn->connect_error) {
-                    echo "problem";
-                } else {
-                    $sql_select = "SELECT `gname`, `icon` FROM `chat_group` WHERE `gname`=? OR `icon`=?";
-                    $fetch_stmt = $conn->prepare($sql_select);
-                    $fetch_stmt->execute();
-                    $fetch_stmt->bind_result($gname,$icon);
-                    if($fetch_stmt->fetch()){
-                        echo "hllo world";
+                if($query){
+                    
+                    if(mysqli_num_rows($query) > 0) {
+                        while($data = mysqli_fetch_assoc($query)) {
+                            $img = $data['icon'];
+                            echo '
+                            <div class="group" style="background-image:url(./'.$data['icon'].')">
+                                <p class="p">'.$data['gname'].'</p>
+                            </div>
+                            ';
+                        }
                     }
+                }else{
+                    echo "not working";
                 }
-
-            
+                
         ?>
         
-        <div class="group" style="background: url();">
-                                <p class="p"></p>
-        </div>
         <div class="add">+
             <p class="add-p">Click and create your own group</p>
         </div>
@@ -85,7 +86,12 @@
         <div class="person">
             <span class="img"></span>
             <div class="about">
-                <span class="nickname">Ezra</span>
+                <span class="nickname">
+                    <?php
+                        session_start();
+                        echo $_SESSION['name'];
+                    ?>
+                </span>
                 <span class="on-off">Online</span>
             </div>
             <p class="time">15:56</p>
@@ -104,7 +110,12 @@
         </div>
     </div>
     <div class="box box4">
+        <div class="thems">
         <h1>Themes</h1>
+        <div class="logout">
+        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+        </div>
+        </div>
         <div class="imgs">
             <img src="./images/download.svg" alt="" class="img">
             <img src="./images/BG1.svg" alt="" class="img">

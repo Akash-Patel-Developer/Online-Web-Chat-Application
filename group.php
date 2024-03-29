@@ -30,13 +30,13 @@
 
                                     $icon_allowed_ext = array('jpg','jpeg','png');
                                     if(in_array($icon_img_lc,$icon_allowed_ext)){
-                                        $icon_new_img = uniqid("IMG-",TRUE). '.' . $icon_img_lc;
-                                        $icon_path = 'upload/' . $icon_new_img;
+                                        // $icon_new_img = uniqid("IMG-",TRUE). '.' . $icon_img_lc;
+                                        $icon_path = 'upload/' . $icon_name;
                                         move_uploaded_file($icon_tmp,$icon_path);
 
                                         $sql_insert = "INSERT INTO `chat_group`(`gname`, `icon`) VALUES (?,?)";
                                         $insert_stmt = $conn->prepare($sql_insert);
-                                        $insert_stmt->bind_param("ss",$gName,$icon_new_img);
+                                        $insert_stmt->bind_param("ss",$gName,$icon_path);
                                         $insert_stmt->execute();
                                         $insert_stmt->store_result();
                                          
